@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MathQuest — Aritmética 3° Secundaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<div id="app">
+
+  <!-- ===================== FASE 0: BIENVENIDA ===================== -->
+  <div class="phase active" id="phase-welcome">
+    <div class="hero">
+      <div class="hero-badge">🎓 3° Secundaria · Aritmética</div>
+      <h1>MathQuest</h1>
+      <p>Aprende Operaciones Básicas con Números Enteros y Fracciones jugando. Supera 3 fases y conviértete en un Maestro Aritmético.</p>
+
+      <div class="welcome-features">
+        <div class="feat-card">
+          <div class="feat-icon">🧠</div>
+          <div class="feat-label">Cuestionario de entrada</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📖</div>
+          <div class="feat-label">Teoría + Ejemplos</div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🏆</div>
+          <div class="feat-label">Evaluación final</div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" onclick="startPhase('pre')">
+        ¡Comenzar aventura! →
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================== FASE 1: CUESTIONARIO ENTRADA ===================== -->
+  <div class="phase" id="phase-pre">
+    <div class="phase-header">
+      <div class="phase-num">Fase 1 de 3</div>
+      <div class="phase-title">Cuestionario de Entrada</div>
+      <div class="phase-desc">Antes de aprender, veamos qué sabes. Responde con confianza — no hay calificación aquí, solo exploración.</div>
+    </div>
+
+    <div class="progress-track"><div class="progress-fill" id="pre-progress" style="width:0%"></div></div>
+    <div class="progress-label" id="pre-prog-label">Pregunta 0 de 6</div>
+
+    <div id="pre-questions"></div>
+
+    <div class="actions">
+      <button class="btn btn-secondary" id="pre-back-btn" onclick="preNav(-1)" disabled>← Anterior</button>
+      <button class="btn btn-teal" id="pre-next-btn" onclick="preNav(1)" disabled>Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ===================== FASE 2: TEORÍA ===================== -->
+  <div class="phase" id="phase-theory">
+    <div class="phase-header">
+      <div class="phase-num">Fase 2 de 3</div>
+      <div class="phase-title">Teoría Interactiva</div>
+      <div class="phase-desc">Explora cada tema, voltea las cards, resuelve el mini-quiz y desbloquea el siguiente módulo.</div>
+    </div>
+
+    <!-- Progress tracker -->
+    <div class="th-tracker">
+      <div class="th-tracker-inner" id="th-tracker-inner"></div>
+      <div class="th-tracker-bar">
+        <div class="th-tracker-fill" id="th-bar"></div>
+      </div>
+      <div class="th-tracker-label" id="th-label">0 de 5 temas dominados</div>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="th-grid" id="th-grid"></div>
+
+    <!-- Expanded card detail (modal-style) -->
+    <div class="th-detail" id="th-detail" style="display:none">
+      <div class="th-detail-card" id="th-detail-card"></div>
+    </div>
+
+    <div class="actions" style="margin-top:8px">
+      <button class="btn btn-secondary" id="th-back-btn" onclick="closeDetail()" style="display:none">← Volver a temas</button>
+      <button class="btn btn-primary" id="th-continue-btn" onclick="startPhase('post')" style="display:none">
+        ¡Listo para el examen! →
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================== FASE 3: CUESTIONARIO SALIDA ===================== -->
+  <div class="phase" id="phase-post">
+    <div class="phase-header">
+      <div class="phase-num">Fase 3 de 3</div>
+      <div class="phase-title">Cuestionario de Salida</div>
+      <div class="phase-desc">Aplica todo lo aprendido. Tienes retroalimentación inmediata en cada respuesta.</div>
+    </div>
+
+    <div class="xp-bar-wrap card" style="padding:20px 28px;">
+      <div class="xp-row">
+        <span class="xp-label">⚡ XP acumulado</span>
+        <span class="xp-val" id="xp-display">0 XP</span>
+      </div>
+      <div class="progress-track" style="margin-bottom:0">
+        <div class="progress-fill" id="post-progress" style="width:0%"></div>
+      </div>
+      <div class="progress-label" id="post-prog-label" style="margin-bottom:0;margin-top:6px">Pregunta 0 de 9</div>
+    </div>
+
+    <div id="post-questions"></div>
+
+    <div class="actions" id="post-actions" style="display:none">
+      <button class="btn btn-gold" onclick="startPhase('results')">
+        Ver mis resultados 🏆
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================== FASE 4: RESULTADOS ===================== -->
+  <div class="phase" id="phase-results">
+    <div class="phase-header">
+      <div class="phase-num">Resultados finales</div>
+      <div class="phase-title" id="res-title">¡Evaluación completa!</div>
+    </div>
+
+    <div class="card">
+      <div id="medal-section"></div>
+
+      <div class="results-grid" id="results-stats"></div>
+
+      <div style="margin:24px 0 10px">
+        <div class="card-title" style="margin-bottom:14px">📊 Análisis por tema</div>
+        <div id="topic-analysis"></div>
+      </div>
+
+      <div style="margin-top:24px">
+        <div class="card-title" style="margin-bottom:14px">🎯 Plan de mejora personalizado</div>
+        <div class="improvement-list" id="improvement-list"></div>
+      </div>
+
+      <div style="margin-top:24px">
+        <div class="card-title" style="margin-bottom:4px">📈 Tu progreso en esta sesión</div>
+        <div style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Comparación: Entrada vs Salida</div>
+        <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+          <div style="text-align:center">
+            <div style="font-size:1.5rem;font-weight:900;color:var(--muted)" id="pre-score-display">–</div>
+            <div style="font-size:.75rem;color:var(--muted);font-weight:700;text-transform:uppercase">Entrada</div>
+          </div>
+          <div style="font-size:2rem;color:var(--lime)">→</div>
+          <div style="text-align:center">
+            <div style="font-size:1.5rem;font-weight:900;color:var(--lime)" id="post-score-display">–</div>
+            <div style="font-size:.75rem;color:var(--lime);font-weight:700;text-transform:uppercase">Salida</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:28px">
+        <button class="btn btn-secondary" onclick="startPhase('theory')">📖 Repasar teoría</button>
+        <button class="btn btn-primary" onclick="restartAll()">🔄 Reiniciar</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<script src="script.js"></script>
+</body>
+</html>
