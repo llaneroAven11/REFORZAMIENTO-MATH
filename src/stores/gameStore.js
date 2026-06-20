@@ -164,6 +164,12 @@ export const useGameStore = defineStore('game', () => {
     thDone.value = []
   }
 
+  function logout() {
+    studentName.value = ''
+    localStorage.removeItem('mathquest_name')
+    resetArea()
+  }
+
   return {
     studentName, currentArea,
     preQuestions, preAnswers, currentPreQ, preScore,
@@ -175,6 +181,6 @@ export const useGameStore = defineStore('game', () => {
     setStudentName, setArea,
     initPreQuiz, setPreAnswer, nextPreQuestion, prevPreQuestion, finishPreQuiz,
     initPostQuiz, answerPostQuestion, finishPostQuiz,
-    markTheoryDone, resetAll, resetArea,
+    markTheoryDone, resetAll, resetArea, logout,
   }
 })

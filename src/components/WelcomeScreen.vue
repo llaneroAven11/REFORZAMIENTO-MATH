@@ -21,6 +21,10 @@
     </div>
 
     <template v-else>
+      <div class="top-bar">
+        <span class="welcome-user">{{ store.studentName }}</span>
+        <button class="btn-logout" @click="logout">Salir ✕</button>
+      </div>
       <div class="section-label">Áreas de matemática</div>
       <div class="area-grid">
         <div
@@ -69,6 +73,10 @@ function selectArea(areaId) {
   store.setArea(areaId)
   store.initPreQuiz()
   router.push({ name: 'pre', params: { areaId } })
+}
+
+function logout() {
+  store.logout()
 }
 </script>
 
@@ -181,5 +189,34 @@ function selectArea(areaId) {
   letter-spacing: 0.06em;
   color: var(--teal);
   position: relative;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.welcome-user {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgba(248, 249, 255, 0.6);
+}
+.btn-logout {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(248, 249, 255, 0.5);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Nunito', sans-serif;
+}
+.btn-logout:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(233, 69, 96, 0.1);
 }
 </style>
