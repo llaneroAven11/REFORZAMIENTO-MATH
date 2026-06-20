@@ -7,7 +7,7 @@ const PRE_QUIZ_COUNT = 6
 const POST_QUIZ_COUNT = 9
 
 export const useGameStore = defineStore('game', () => {
-  const studentName = ref('')
+  const studentName = ref(localStorage.getItem('mathquest_name') || '')
   const currentArea = ref(null)
 
   // Pre-quiz
@@ -64,6 +64,7 @@ export const useGameStore = defineStore('game', () => {
 
   function setStudentName(name) {
     studentName.value = name
+    localStorage.setItem('mathquest_name', name)
   }
 
   function setArea(areaId) {
@@ -135,6 +136,7 @@ export const useGameStore = defineStore('game', () => {
   function resetAll() {
     const name = studentName.value
     studentName.value = ''
+    localStorage.removeItem('mathquest_name')
     currentArea.value = null
     preQuestions.value = []
     preAnswers.value = []
