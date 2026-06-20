@@ -3,5 +3,6 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   base: '/REFORZAMIENTO-MATH/',
+  build: { outDir: 'docs' },
   plugins: [vue()],
 })
