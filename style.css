@@ -460,6 +460,8 @@
   .th-c3 .flip-front { background: linear-gradient(140deg, #7b2d8b, #4a1060); }
   .th-c4 .flip-front { background: linear-gradient(140deg, #b05c00, #7a3d00); }
   .th-c5 .flip-front { background: linear-gradient(140deg, #1a6b3c, #0d4022); }
+  .th-c6 .flip-front { background: linear-gradient(140deg, #6b21a8, #3b0764); }
+  .th-c7 .flip-front { background: linear-gradient(140deg, #b91c1c, #7f1d1d); }
 
   /* ===== DETAIL PANEL ===== */
   .th-detail { animation: slideUp .4s cubic-bezier(.4,0,.2,1); }

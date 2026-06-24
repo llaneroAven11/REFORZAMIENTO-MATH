@@ -399,6 +399,8 @@ body {
 .th-c3 .flip-front { background: linear-gradient(140deg, #7b2d8b, #4a1060); }
 .th-c4 .flip-front { background: linear-gradient(140deg, #b05c00, #7a3d00); }
 .th-c5 .flip-front { background: linear-gradient(140deg, #1a6b3c, #0d4022); }
+.th-c6 .flip-front { background: linear-gradient(140deg, #6b21a8, #3b0764); }
+.th-c7 .flip-front { background: linear-gradient(140deg, #b91c1c, #7f1d1d); }
 
 .th-detail { animation: slideUp .4s cubic-bezier(.4,0,.2,1); }
 .th-detail-card {
@@ -495,6 +497,14 @@ body {
 .card-title {
   font-size: 1.15rem; font-weight: 800; color: var(--ink);
 }
+
+.katex { font-size: 1.05em; }
+.fb-rule .katex { font-size: 1em; }
+.td-rule .katex { font-size: 1.1em; }
+.td-example .katex { font-size: 1.05em; }
+.q-text .katex { font-size: 1.1em; }
+.q-math .katex { font-size: 1.1em; }
+.tq-opt .katex { font-size: 1em; }
 
 @media(max-width:600px) {
   .td-header, .td-body { padding: 20px 18px; }

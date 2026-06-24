@@ -126,5 +126,109 @@ export const theoryCards = [
       ans: 1,
       exp: 'Primero la multiplicación: 2·4 = 8. Luego la resta: 3−8 = −5. PEMDAS: multiplicación antes de resta.'
     }
+  },
+  {
+    area: 'algebra', icon: '⬆️', title: 'Teoría de Exponentes', sub: 'Leyes de potencias y raíces', color: 'th-c6',
+    rule: '$a^m \\cdot a^n = a^{m+n}$\n$\\dfrac{a^m}{a^n}=a^{m-n}\\ (a\\neq 0)$\n$(a^m)^n = a^{m\\cdot n}$\n$a^0=1\\; |\\; a^{-n}=\\dfrac{1}{a^n}$',
+    headerBg: 'linear-gradient(135deg,#6b21a8,#3b0764)',
+    sections: [
+      {
+        type: 'steps',
+        title: 'Leyes fundamentales de exponentes',
+        steps: [
+          { h: '1. Producto de igual base',
+            p: '$a^m \\cdot a^n = a^{m+n}$. Ej: $2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128$.' },
+          { h: '2. Cociente de igual base',
+            p: '$\\dfrac{a^m}{a^n} = a^{m-n}\\ (a \\neq 0)$. Ej: $\\dfrac{5^6}{5^2} = 5^{6-2} = 5^4 = 625$.' },
+          { h: '3. Potencia de una potencia',
+            p: '$(a^m)^n = a^{m \\cdot n}$. Ej: $(3^2)^3 = 3^{2 \\cdot 3} = 3^6 = 729$.' },
+          { h: '4. Potencia de un producto y cociente',
+            p: '$(ab)^n = a^n \\, b^n$ y $\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n}\\ (b \\neq 0)$.' },
+          { h: '5. Exponente cero, negativo y fraccionario',
+            p: '$a^0 = 1$, $a^{-n} = \\dfrac{1}{a^n}$, $a^{\\frac{m}{n}} = \\sqrt[n]{a^m}\\ (a \\neq 0)$. Ej: $2^{-3} = \\dfrac{1}{8}$, $8^{\\frac{2}{3}} = (\\sqrt[3]{8})^2 = 4$.' },
+        ]
+      },
+      {
+        type: 'rule',
+        content: '$\\boxed{a^m \\cdot a^n = a^{m+n}}$ &nbsp; Producto<br>\n' +
+          '$\\boxed{\\dfrac{a^m}{a^n} = a^{m-n}\\ (a \\neq 0)}$ &nbsp; Cociente<br>\n' +
+          '$\\boxed{(a^m)^n = a^{m \\cdot n}}$ &nbsp; Potencia de potencia<br>\n' +
+          '$\\boxed{(ab)^n = a^n b^n}$ &nbsp; Producto elevado<br>\n' +
+          '$\\boxed{\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n}\\ (b \\neq 0)}$ &nbsp; Cociente elevado<br>\n' +
+          '$\\boxed{a^0 = 1\\ (a \\neq 0)}$ &nbsp; Exponente cero<br>\n' +
+          '$\\boxed{a^{-n} = \\dfrac{1}{a^n}\\ (a \\neq 0)}$ &nbsp; Exponente negativo<br>\n' +
+          '$\\boxed{a^{\\frac{m}{n}} = \\sqrt[n]{a^m}\\ (n \\neq 0)}$ &nbsp; Exponente fraccionario'
+      },
+      {
+        type: 'example',
+        content: '1. $\\dfrac{2^3 \\cdot 2^5}{2^6} = \\dfrac{2^{3+5}}{2^6} = \\dfrac{2^8}{2^6} = 2^{8-6} = 2^2 = \\boxed{4}$'
+      },
+      {
+        type: 'example',
+        content: '2. $(3^2)^3 \\cdot 3^{-4} = 3^{2 \\cdot 3} \\cdot 3^{-4} = 3^6 \\cdot 3^{-4} = 3^{6-4} = 3^2 = \\boxed{9}$'
+      },
+      {
+        type: 'example',
+        content: '3. $(x^2 y^3)^4 \\div (x^3 y^2)^2 = \\dfrac{x^{2\\cdot4} y^{3\\cdot4}}{x^{3\\cdot2} y^{2\\cdot2}} = \\dfrac{x^8 y^{12}}{x^6 y^4} = x^{8-6} y^{12-4} = \\boxed{x^2 y^8}$'
+      },
+      {
+        type: 'warn',
+        content: '$a^0 = 1$ solo si $a \\neq 0$. $0^0$ no está definido. No confundir $(a^m)^n = a^{mn}$ con $a^{m^n}$.'
+      }
+    ],
+    quiz: {
+      q: '$\\dfrac{2^3 \\cdot 2^4}{2^5} =$',
+      opts: ['$4$', '$8$', '$16$', '$32$'],
+      ans: 0,
+      exp: '$2^3 \\cdot 2^4 = 2^7$, luego $2^7 \\div 2^5 = 2^2 = 4$.'
+    }
+  },
+  {
+    area: 'algebra', icon: '⬆️', title: 'Ecuaciones Exponenciales', sub: 'Resolver potencias con incógnita', color: 'th-c7',
+    rule: '$a^{f(x)} = a^{g(x)} \\;\\Rightarrow\\; f(x)=g(x)$\n$2^x=8 \\Rightarrow 2^x=2^3$\n$\\therefore x=3$',
+    headerBg: 'linear-gradient(135deg,#b91c1c,#7f1d1d)',
+    sections: [
+      {
+        type: 'steps',
+        title: 'Métodos de resolución',
+        steps: [
+          { h: '1. Igualar bases',
+            p: 'Si $a^{f(x)} = a^{g(x)}$, entonces $f(x) = g(x)$. Ej: $2^{x+1} = 16 \\Rightarrow 2^{x+1} = 2^4 \\Rightarrow x+1 = 4 \\Rightarrow x = 3$.' },
+          { h: '2. Cambio de variable',
+            p: 'Para $a^{2x} + a^x + c = 0$, sea $t = a^x$, luego $t^2 + t + c = 0$. Resuelve y despeja $x$.' },
+          { h: '3. Propiedades auxiliares',
+            p: 'Usa $a^0 = 1$, $a^{-n} = \\dfrac{1}{a^n}$, $(a^m)^n = a^{mn}$ para reescribir términos.' },
+          { h: '4. Verificación',
+            p: 'Comprueba siempre la solución. La base debe cumplir $a > 0$ y $a \\neq 1$.' },
+        ]
+      },
+      {
+        type: 'rule',
+        content: '$a^{f(x)} = a^{g(x)} \\;\\Longrightarrow\\; f(x) = g(x)$<br><br>\n' +
+          'Ej: $2^{x-1} = 8 \\Rightarrow 2^{x-1} = 2^3 \\Rightarrow x-1=3 \\Rightarrow \\boxed{x = 4}$'
+      },
+      {
+        type: 'example',
+        content: 'Resuelve $3^{2x-1} = 27$<br>\n' +
+          '$27 = 3^3 \\Rightarrow 3^{2x-1} = 3^3 \\Rightarrow 2x-1 = 3$<br>\n' +
+          '$\\Rightarrow 2x = 4 \\Rightarrow \\boxed{x = 2}$'
+      },
+      {
+        type: 'example',
+        content: 'Resuelve $2^{x+2} - 2^x = 12$<br>\n' +
+          '$2^{x+2} - 2^x = 4\\cdot 2^x - 2^x = 3\\cdot 2^x$<br>\n' +
+          '$3\\cdot 2^x = 12 \\Rightarrow 2^x = 4 = 2^2 \\Rightarrow \\boxed{x = 2}$'
+      },
+      {
+        type: 'warn',
+        content: 'La base $a$ debe cumplir $a > 0$ y $a \\neq 1$. Si $0 < a < 1$, la función es decreciente pero el método de igualar bases sigue siendo válido.'
+      }
+    ],
+    quiz: {
+      q: '$2^{x} = 32$, halla $x$',
+      opts: ['$4$', '$5$', '$6$', '$16$'],
+      ans: 1,
+      exp: '$32 = 2^5$, luego $2^x = 2^5 \\Rightarrow x = 5$.'
+    }
   }
 ]

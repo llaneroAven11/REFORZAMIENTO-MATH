@@ -45,13 +45,13 @@
                 <div class="ff-sub">{{ card.sub }}</div>
               </div>
             </div>
-            <div class="flip-face flip-back">
-              <div class="fb-title">Regla clave</div>
-              <div class="fb-rule">{{ card.rule }}</div>
-              <div class="fb-action" @click.stop="openDetail(i)">
-                Ver teoría completa + mini-quiz →
+              <div class="flip-face flip-back">
+                <div class="fb-title">Regla clave</div>
+                <div class="fb-rule"><MathHtml :text="card.rule" /></div>
+                <div class="fb-action" @click.stop="openDetail(i)">
+                  Ver teoría completa + mini-quiz →
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
@@ -84,6 +84,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { useGameStore } from '../stores/gameStore'
 import { subjectAreas } from '../data/subjectAreas.js'
 import TheoryDetail from './TheoryDetail.vue'
+import MathHtml from './MathHtml.vue'
 
 const router = useRouter()
 const route = useRoute()

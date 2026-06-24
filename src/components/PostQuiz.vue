@@ -33,8 +33,8 @@
           <span class="q-num">Pregunta {{ qi + 1 }}/{{ store.postQuestions.length }} · {{ q.topic }}</span>
           <span class="q-level" :class="q.level">{{ levelLabel[q.level] }} · +{{ xpMap[q.level] }} XP</span>
         </div>
-        <div class="q-text">{{ q.text }}</div>
-        <div v-if="q.sub" class="q-math">{{ q.sub }}</div>
+        <div class="q-text"><MathHtml :text="q.text" /></div>
+        <div v-if="q.sub" class="q-math"><MathHtml :text="q.sub" /></div>
         <div class="options-grid">
           <button
             v-for="(opt, oi) in q.opts"
@@ -44,7 +44,7 @@
             :disabled="store.postAnswered[qi]"
             @click="select(qi, oi)"
           >
-            <span class="opt-letter">{{ letters[oi] }}</span>{{ opt }}
+            <span class="opt-letter">{{ letters[oi] }}</span><MathHtml :text="opt" />
           </button>
         </div>
         <div
@@ -53,10 +53,10 @@
           :class="store.postAnswers[qi] === q.ans ? 'ok' : 'err'"
         >
           <template v-if="store.postAnswers[qi] === q.ans">
-            ✅ <strong>¡Correcto!</strong> {{ q.explanation }}
+            ✅ <strong>¡Correcto!</strong> <MathHtml :text="q.explanation" />
           </template>
           <template v-else>
-            ❌ <strong>Respuesta correcta: {{ letters[q.ans] }}.</strong> {{ q.explanation }}
+            ❌ <strong>Respuesta correcta: {{ letters[q.ans] }}.</strong> <MathHtml :text="q.explanation" />
           </template>
         </div>
       </div>
@@ -80,6 +80,7 @@ import { computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useGameStore } from '../stores/gameStore'
 import { subjectAreas } from '../data/subjectAreas.js'
+import MathHtml from './MathHtml.vue'
 
 const router = useRouter()
 const route = useRoute()

@@ -19,19 +19,19 @@
             >
               <div class="td-step-num">{{ sti + 1 }}</div>
               <div class="td-step-content">
-                <h5>{{ step.h }}</h5>
-                <p>{{ step.p }}</p>
+                <h5><MathHtml :text="step.h" /></h5>
+                <MathHtml :text="step.p" tag="p" />
               </div>
             </div>
           </div>
-          <div v-else-if="sec.type === 'rule'" class="td-rule" v-html="br(sec.content)"></div>
-          <div v-else-if="sec.type === 'example'" class="td-example" v-html="br(sec.content)"></div>
-          <div v-else-if="sec.type === 'warn'" class="td-warn">{{ sec.content }}</div>
+          <div v-else-if="sec.type === 'rule'" class="td-rule"><MathHtml :text="sec.content" klass="td-rule-inner" /></div>
+          <div v-else-if="sec.type === 'example'" class="td-example"><MathHtml :text="sec.content" klass="td-example-inner" /></div>
+          <div v-else-if="sec.type === 'warn'" class="td-warn"><MathHtml :text="sec.content" /></div>
         </template>
 
         <div class="td-quiz">
           <div class="td-quiz-title">⚡ Mini-quiz — ¿Lo entendiste?</div>
-          <div class="tq-question">{{ card.quiz.q }}</div>
+          <div class="tq-question"><MathHtml :text="card.quiz.q" /></div>
           <div class="tq-opts">
             <button
               v-for="(opt, oi) in card.quiz.opts"
@@ -41,11 +41,11 @@
               :disabled="answered"
               @click="answer(oi)"
             >
-              <span class="tq-letter">{{ letters[oi] }}</span>{{ opt }}
+              <span class="tq-letter">{{ letters[oi] }}</span><MathHtml :text="opt" />
             </button>
           </div>
           <div v-if="resultMsg" class="tq-result show" :class="resultOk ? 'ok' : 'err'">
-            {{ resultMsg }}
+            <MathHtml :text="resultMsg" />
           </div>
         </div>
       </div>
@@ -59,6 +59,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useGameStore } from '../stores/gameStore'
+import MathHtml from './MathHtml.vue'
 
 const props = defineProps({ cardIndex: { type: Number, required: true } })
 const emit = defineEmits(['close', 'done'])

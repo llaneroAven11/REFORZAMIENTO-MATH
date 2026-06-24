@@ -20,8 +20,8 @@
           <span class="q-num">Pregunta {{ store.currentPreQ + 1 }}/{{ store.preQuestions.length }}</span>
           <span class="q-level" :class="q.level">{{ levelLabel[q.level] }}</span>
         </div>
-        <div class="q-text">{{ q.text }}</div>
-        <div v-if="q.sub" class="q-subtext">{{ q.sub }}</div>
+        <div class="q-text"><MathHtml :text="q.text" /></div>
+        <div v-if="q.sub" class="q-subtext"><MathHtml :text="q.sub" /></div>
         <div class="options-grid">
           <button
             v-for="(opt, i) in q.opts"
@@ -30,7 +30,7 @@
             :class="{ selected: store.preAnswers[store.currentPreQ] === i }"
             @click="select(i)"
           >
-            <span class="opt-letter">{{ letters[i] }}</span>{{ opt }}
+            <span class="opt-letter">{{ letters[i] }}</span><MathHtml :text="opt" />
           </button>
         </div>
       </div>
@@ -62,6 +62,7 @@ import { computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useGameStore } from '../stores/gameStore'
 import { subjectAreas } from '../data/subjectAreas.js'
+import MathHtml from './MathHtml.vue'
 
 const router = useRouter()
 const route = useRoute()
