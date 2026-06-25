@@ -29,6 +29,8 @@
           <div v-else-if="sec.type === 'warn'" class="td-warn"><MathHtml :text="sec.content" /></div>
         </template>
 
+        <VideoEmbed v-if="card.video" :video="card.video" />
+
         <div class="td-quiz">
           <div class="td-quiz-title">⚡ Mini-quiz — ¿Lo entendiste?</div>
           <div class="tq-question"><MathHtml :text="card.quiz.q" /></div>
@@ -60,6 +62,7 @@
 import { ref, computed } from 'vue'
 import { useGameStore } from '../stores/gameStore'
 import MathHtml from './MathHtml.vue'
+import VideoEmbed from './VideoEmbed.vue'
 
 const props = defineProps({ cardIndex: { type: Number, required: true } })
 const emit = defineEmits(['close', 'done'])

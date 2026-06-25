@@ -2,6 +2,7 @@ export const theoryCards = [
   {
     area: 'arithmetic', icon: '🔢', title: 'Números Enteros', sub: 'Suma, resta y signos', color: 'th-c1',
     rule: '(−)+(−) = negativo\n(−)+(+) → usa el mayor\n(−)×(−) = (+)\n(−)×(+) = (−)',
+    video: { id: 'tNxHToZ-LbE', title: 'Suma y resta de números enteros', author: 'Profe Alex' },
     headerBg: 'linear-gradient(135deg,#0f3460,#1a1a6e)',
     sections: [
       {
@@ -28,6 +29,7 @@ export const theoryCards = [
   {
     area: 'arithmetic', icon: '🔣', title: 'Signos de Agrupación', sub: 'Paréntesis, corchetes y llaves', color: 'th-c2',
     rule: 'Elimina de adentro → afuera\n(+)(...) → no cambia signos\n(−)(...) → cambia TODOS los signos',
+    video: { id: 'jdqwzCL_PG0', title: 'Eliminar signos de agrupación', author: 'Profe Alex' },
     headerBg: 'linear-gradient(135deg,#0077a8,#004d6d)',
     sections: [
       {
@@ -52,6 +54,7 @@ export const theoryCards = [
   {
     area: 'arithmetic', icon: '½', title: 'Operaciones con Fracciones', sub: 'Suma, resta y división', color: 'th-c3',
     rule: 'a/b + c/d → buscar MCM\na/b ÷ c/d = a/b × d/c\n(multiplica por el recíproco)',
+    video: { id: 'LgMptyzudXU', title: 'Si te parecen difíciles las fracciones', author: 'Profe Alex' },
     headerBg: 'linear-gradient(135deg,#7b2d8b,#4a1060)',
     sections: [
       {
@@ -82,6 +85,7 @@ export const theoryCards = [
   {
     area: 'arithmetic', icon: '⚖️', title: 'Desigualdades con Enteros', sub: 'Conjuntos solución en ℤ', color: 'th-c4',
     rule: '−4 < x < 2 en ℤ:\nx ∈ {−3,−2,−1, 0, 1}\nLos extremos NO se incluyen',
+    video: { id: 'gMDAtLLW5lM', title: 'Inecuaciones de primer grado', author: 'Daniel Carreón' },
     headerBg: 'linear-gradient(135deg,#b05c00,#7a3d00)',
     sections: [
       {
@@ -106,6 +110,7 @@ export const theoryCards = [
   {
     area: 'arithmetic', icon: '🔤', title: 'Expresiones Algebraicas', sub: 'Evaluar M, T, L y operar', color: 'th-c5',
     rule: 'Jerarquía de operaciones:\n1° Paréntesis ( )\n2° Potencias y raíces\n3° × y ÷  (izq → der)\n4° + y −  (izq → der)',
+    video: { id: 'pUfQ1kCuRjY', title: 'Valor numérico de expresiones algebraicas', author: 'Profe Alex' },
     headerBg: 'linear-gradient(135deg,#1a6b3c,#0d4022)',
     sections: [
       {
@@ -130,6 +135,7 @@ export const theoryCards = [
   {
     area: 'algebra', icon: '⬆️', title: 'Teoría de Exponentes', sub: 'Leyes de potencias y raíces', color: 'th-c6',
     rule: '$a^m \\cdot a^n = a^{m+n}$\n$\\dfrac{a^m}{a^n}=a^{m-n}\\ (a\\neq 0)$\n$(a^m)^n = a^{m\\cdot n}$\n$a^0=1\\; |\\; a^{-n}=\\dfrac{1}{a^n}$',
+    video: { id: 'kN1lgy6fPVU', title: 'Propiedades de las potencias', author: 'Susi Profe' },
     headerBg: 'linear-gradient(135deg,#6b21a8,#3b0764)',
     sections: [
       {
@@ -186,6 +192,7 @@ export const theoryCards = [
   {
     area: 'algebra', icon: '⬆️', title: 'Ecuaciones Exponenciales', sub: 'Resolver potencias con incógnita', color: 'th-c7',
     rule: '$a^{f(x)} = a^{g(x)} \\;\\Rightarrow\\; f(x)=g(x)$\n$2^x=8 \\Rightarrow 2^x=2^3$\n$\\therefore x=3$',
+    video: { id: 'iDKX--wp2U4', title: 'Ecuaciones exponenciales | Ej. 8', author: 'julioprofe' },
     headerBg: 'linear-gradient(135deg,#b91c1c,#7f1d1d)',
     sections: [
       {
@@ -229,6 +236,60 @@ export const theoryCards = [
       opts: ['$4$', '$5$', '$6$', '$16$'],
       ans: 1,
       exp: '$32 = 2^5$, luego $2^x = 2^5 \\Rightarrow x = 5$.'
+    }
+  },
+  {
+    area: 'algebra', icon: '⬆️', title: 'Sistemas de Ecuaciones', sub: 'Resolver 2 ecuaciones con 2 incógnitas', color: 'th-c8',
+    rule: '$a_1x+b_1y=c_1$  |  $a_2x+b_2y=c_2$\nSustitución: despejar y reemplazar\nEliminación: sumar ecuaciones',
+    video: { id: '3FHhPLVUt9o', title: 'Sistemas de ecuaciones 2×2 por sustitución', author: 'julioprofe' },
+    headerBg: 'linear-gradient(135deg,#0d9488,#115e59)',
+    sections: [
+      {
+        type: 'steps',
+        title: 'Métodos de resolución',
+        steps: [
+          { h: '1. Sustitución',
+            p: 'Despeja una variable de una ecuación y reemplázala en la otra. Ej: $\\begin{cases} x+y=5 \\\\ 2x-y=1 \\end{cases}$ Despejamos $y=5-x$ y sustituimos en la segunda: $2x-(5-x)=1 \\Rightarrow 3x-5=1 \\Rightarrow x=2$, luego $y=3$.' },
+          { h: '2. Eliminación (reducción)',
+            p: 'Multiplica cada ecuación para igualar coeficientes de una variable y suma o resta para eliminarla. Ej: $\\begin{cases} 3x+2y=7 \\\\ 5x-2y=1 \\end{cases}$ Sumando: $8x=8 \\Rightarrow x=1$, luego $y=2$.' },
+          { h: '3. Igualación',
+            p: 'Despeja la misma variable en ambas ecuaciones e iguala las expresiones. Útil cuando ambas tienen el mismo despeje simple.' },
+        ]
+      },
+      {
+        type: 'rule',
+        content: '<b>Paso a paso (sustitución):</b><br>\n' +
+          '1. Despeja $x$ o $y$ en una ecuación<br>\n' +
+          '2. Sustituye en la otra ecuación<br>\n' +
+          '3. Resuelve la ecuación de una variable<br>\n' +
+          '4. Halla la segunda variable<br>\n' +
+          '5. Verifica en ambas ecuaciones originales'
+      },
+      {
+        type: 'example',
+        content: 'Resuelve por eliminación:<br>\n' +
+          '$\\begin{cases} 2x+3y=8 \\\\ 4x-3y=4 \\end{cases}$<br>\n' +
+          'Sumando: $6x=12 \\Rightarrow x=2$<br>\n' +
+          'Sustituyendo: $2(2)+3y=8 \\Rightarrow 4+3y=8 \\Rightarrow 3y=4 \\Rightarrow y=\\dfrac{4}{3}$<br>\n' +
+          '$\\boxed{(x,y)=\\left(2,\\dfrac{4}{3}\\right)}$'
+      },
+      {
+        type: 'example',
+        content: 'Resuelve por sustitución:<br>\n' +
+          '$\\begin{cases} y=2x+1 \\\\ 3x+2y=9 \\end{cases}$<br>\n' +
+          'Sustituimos $y$: $3x+2(2x+1)=9 \\Rightarrow 3x+4x+2=9 \\Rightarrow 7x=7 \\Rightarrow x=1$<br>\n' +
+          'Luego $y=2(1)+1=3$ &nbsp; $\\boxed{(1,3)}$'
+      },
+      {
+        type: 'warn',
+        content: 'Siempre verifica tu solución sustituyendo en las dos ecuaciones originales. Si no cumple ambas, hay un error.'
+      }
+    ],
+    quiz: {
+      q: '$\\begin{cases} x+y=7 \\\\ x-y=3 \\end{cases}$ soluciones:',
+      opts: ['$(5,2)$', '$(2,5)$', '$(4,3)$', '$(3,4)$'],
+      ans: 0,
+      exp: 'Sumando: $2x=10 \\Rightarrow x=5$. Luego $5+y=7 \\Rightarrow y=2$. Solución $(5,2)$.'
     }
   }
 ]
