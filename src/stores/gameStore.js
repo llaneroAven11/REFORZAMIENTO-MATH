@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { theoryCards } from '../data/theoryCards.js'
-import { pickQuestions, shuffleOptions } from '../data/questionBank.js'
+import { pickQuestions, pickQuestionsByTopic, shuffleOptions } from '../data/questionBank.js'
 
 const PRE_QUIZ_COUNT = 6
 const POST_QUIZ_COUNT = 9
@@ -129,6 +129,81 @@ export const useGameStore = defineStore('game', () => {
     postScore.value = postAnswers.value.filter((a, i) => a === postQuestions.value[i].ans).length
   }
 
+  // Topic quiz state (shared for diagnostic and exam)
+  const topicQuizQuestions = ref([])
+  const topicQuizAnswers = ref([])
+  const topicQuizCurrent = ref(0)
+  const topicQuizScore = ref(0)
+  const topicQuizMode = ref('')
+  const topicQuizTopic = ref('')
+
+  const topicDiagResult = ref(null)
+  const topicExamResult = ref(null)
+
+  const topicAlias = {
+    'Operaciones con Fracciones': 'Fracciones',
+    'Desigualdades con Enteros': 'Desigualdades',
+    'Expresiones Algebraicas': 'Expresiones con variables',
+  }
+
+  const topicQuizProgress = computed(() => {
+    if (topicQuizQuestions.value.length === 0) return 0
+    return ((topicQuizCurrent.value + 1) / topicQuizQuestions.value.length) * 100
+  })
+
+  const isLastTopicQuizQuestion = computed(() =>
+    topicQuizCurrent.value === topicQuizQuestions.value.length - 1
+  )
+
+  const allTopicQuizAnswered = computed(() =>
+    topicQuizQuestions.value.length > 0 && topicQuizAnswers.value.every(a => a !== null)
+  )
+
+  function initTopicQuiz(areaId, topic, mode) {
+    const dbTopic = topicAlias[topic] || topic
+    const raw = pickQuestionsByTopic(areaId, dbTopic, mode)
+    if (raw.length === 0) {
+      const fallback = pickQuestions(areaId, mode, 4)
+      topicQuizQuestions.value = fallback.map(shuffleOptions)
+    } else {
+      topicQuizQuestions.value = raw.map(shuffleOptions)
+    }
+    topicQuizAnswers.value = new Array(topicQuizQuestions.value.length).fill(null)
+    topicQuizCurrent.value = 0
+    topicQuizScore.value = 0
+    topicQuizMode.value = mode
+    topicQuizTopic.value = topic
+    if (mode === 'diagnostic') topicDiagResult.value = null
+    else topicExamResult.value = null
+  }
+
+  function setTopicQuizAnswer(index, value) {
+    topicQuizAnswers.value[index] = value
+  }
+
+  function nextTopicQuiz() {
+    if (topicQuizCurrent.value < topicQuizQuestions.value.length - 1) {
+      topicQuizCurrent.value++
+    }
+  }
+
+  function prevTopicQuiz() {
+    if (topicQuizCurrent.value > 0) {
+      topicQuizCurrent.value--
+    }
+  }
+
+  function finishTopicQuiz() {
+    let score = 0
+    topicQuizQuestions.value.forEach((q, i) => {
+      if (topicQuizAnswers.value[i] === q.ans) score++
+    })
+    topicQuizScore.value = score
+    const result = { score, total: topicQuizQuestions.value.length, pct: Math.round((score / topicQuizQuestions.value.length) * 100) }
+    if (topicQuizMode.value === 'diagnostic') topicDiagResult.value = result
+    else topicExamResult.value = result
+  }
+
   function markTheoryDone(index) {
     thDone.value[index] = true
   }
@@ -148,6 +223,14 @@ export const useGameStore = defineStore('game', () => {
     xp.value = 0
     postScore.value = 0
     thDone.value = []
+    topicQuizQuestions.value = []
+    topicQuizAnswers.value = []
+    topicQuizCurrent.value = 0
+    topicQuizScore.value = 0
+    topicQuizMode.value = ''
+    topicQuizTopic.value = ''
+    topicDiagResult.value = null
+    topicExamResult.value = null
   }
 
   function resetArea() {
@@ -162,6 +245,14 @@ export const useGameStore = defineStore('game', () => {
     xp.value = 0
     postScore.value = 0
     thDone.value = []
+    topicQuizQuestions.value = []
+    topicQuizAnswers.value = []
+    topicQuizCurrent.value = 0
+    topicQuizScore.value = 0
+    topicQuizMode.value = ''
+    topicQuizTopic.value = ''
+    topicDiagResult.value = null
+    topicExamResult.value = null
   }
 
   function logout() {
@@ -175,12 +266,17 @@ export const useGameStore = defineStore('game', () => {
     preQuestions, preAnswers, currentPreQ, preScore,
     postQuestions, postAnswers, postAnswered, xp, postScore,
     thDone,
+    topicQuizQuestions, topicQuizAnswers, topicQuizCurrent, topicQuizScore,
+    topicQuizMode, topicQuizTopic, topicQuizProgress,
+    topicDiagResult, topicExamResult,
+    isLastTopicQuizQuestion, allTopicQuizAnswered,
     areaTheoryCards,
     preProgress, postProgress, postAnsweredCount, allPostAnswered,
     allTheoryDone, thDoneCount, postPct, postCorrectCount,
     setStudentName, setArea,
     initPreQuiz, setPreAnswer, nextPreQuestion, prevPreQuestion, finishPreQuiz,
     initPostQuiz, answerPostQuestion, finishPostQuiz,
+    initTopicQuiz, setTopicQuizAnswer, nextTopicQuiz, prevTopicQuiz, finishTopicQuiz,
     markTheoryDone, resetAll, resetArea, logout,
   }
 })

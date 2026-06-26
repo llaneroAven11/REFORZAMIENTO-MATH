@@ -2,7 +2,7 @@
   <div class="phase-content">
     <div class="phase-header">
       <div class="phase-num" style="display:flex;justify-content:space-between;align-items:center;width:100%;max-width:480px;margin:0 auto 10px">
-        <span>Fase 3 de 3 · {{ areaName }}</span>
+        <span>Fase 2 de 2 · {{ areaName }}</span>
         <button class="btn-close" @click="goBack" title="Salir del examen">✕</button>
       </div>
       <div class="phase-title">Cuestionario de Salida</div>

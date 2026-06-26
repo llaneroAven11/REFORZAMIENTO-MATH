@@ -65,7 +65,7 @@ import MathHtml from './MathHtml.vue'
 import VideoEmbed from './VideoEmbed.vue'
 
 const props = defineProps({ cardIndex: { type: Number, required: true } })
-const emit = defineEmits(['close', 'done'])
+const emit = defineEmits(['close'])
 const store = useGameStore()
 
 const card = computed(() => store.areaTheoryCards[props.cardIndex])
@@ -94,11 +94,7 @@ function answer(oi) {
   const q = card.value.quiz
   if (oi === q.ans) {
     resultOk.value = true
-    resultMsg.value = `✅ ¡Correcto! ${q.exp}`
-    store.markTheoryDone(props.cardIndex)
-    setTimeout(() => {
-      emit('done')
-    }, 1200)
+    resultMsg.value = `✅ ¡Correcto! ${q.exp} ¡Puedes cerrar y continuar!`
   } else {
     resultOk.value = false
     resultMsg.value = `❌ Respuesta correcta: ${letters[q.ans]}. ${q.exp} Vuelve a repasar la teoría e intenta de nuevo.`

@@ -415,6 +415,12 @@ export function pickQuestions(areaId, type, count) {
   return shuffled.slice(0, Math.min(count, shuffled.length))
 }
 
+export function pickQuestionsByTopic(areaId, topic, type) {
+  return questionBank
+    .filter(q => q.area === areaId && q.topic === topic && (q.type === type || q.type === 'both'))
+    .sort(() => Math.random() - 0.5)
+}
+
 export function shuffleOptions(question) {
   const opts = question.opts.map((text, i) => ({ text, origIdx: i }))
   const shuffled = [...opts].sort(() => Math.random() - 0.5)

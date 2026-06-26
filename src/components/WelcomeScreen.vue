@@ -1,7 +1,7 @@
 <template>
   <div class="hero">
     <h1>MathQuest</h1>
-    <p>Elige un área de matemática para practicar. Cada área tiene su propio diagnóstico, teoría interactiva y evaluación final.</p>
+    <p>Elige un área de matemática para practicar. Revisa la teoría, resuelve el quiz de cada tema y luego rinde el examen final.</p>
 
     <div v-if="!store.studentName" class="name-form">
       <label for="studentName">¿Cómo te llamas?</label>
@@ -71,8 +71,7 @@ function topicsCount(areaId) {
 
 function selectArea(areaId) {
   store.setArea(areaId)
-  store.initPreQuiz()
-  router.push({ name: 'pre', params: { areaId } })
+  router.push({ name: 'theory', params: { areaId } })
 }
 
 function logout() {
