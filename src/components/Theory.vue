@@ -92,6 +92,8 @@
     <TopicResults
       v-if="flowStep === 'results'"
       @continue="onResultsContinue"
+      @retry="onResultsRetry"
+      @close="onResultsClose"
     />
   </div>
 </template>
@@ -142,12 +144,17 @@ onMounted(() => {
 })
 
 function openCard(i) {
+  activeIndex.value = i
   if (store.thDone[i]) {
-    activeIndex.value = i
     flowStep.value = 'theory'
     return
   }
-  activeIndex.value = i
+  if (store.attemptedTopics[i]) {
+    const card = cards.value[i]
+    store.initTopicQuiz(store.currentArea, card.title, 'exam')
+    flowStep.value = 'quiz-exam'
+    return
+  }
   const card = cards.value[i]
   store.initTopicQuiz(store.currentArea, card.title, 'diagnostic')
   flowStep.value = 'quiz-diag'
@@ -168,12 +175,23 @@ function onTheoryClose() {
 }
 
 function onExamDone() {
-  store.markTheoryDone(activeIndex.value)
+  store.markTopicAttempted(activeIndex.value)
   flowStep.value = 'results'
 }
 
-function onResultsContinue() {
+function onResultsClose() {
   flowStep.value = 'cards'
+}
+
+function onResultsContinue() {
+  store.markTheoryDone(activeIndex.value)
+  flowStep.value = 'cards'
+}
+
+function onResultsRetry() {
+  const card = cards.value[activeIndex.value]
+  store.initTopicQuiz(store.currentArea, card.title, 'exam')
+  flowStep.value = 'quiz-exam'
 }
 
 function goBack() {

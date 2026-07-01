@@ -25,6 +25,7 @@ export const useGameStore = defineStore('game', () => {
 
   // Theory
   const thDone = ref([])
+  const attemptedTopics = ref([])
 
   const areaTheoryCards = computed(() =>
     theoryCards.filter(c => c.area === currentArea.value)
@@ -71,6 +72,7 @@ export const useGameStore = defineStore('game', () => {
     currentArea.value = areaId
     const areaCards = theoryCards.filter(c => c.area === areaId)
     thDone.value = new Array(areaCards.length).fill(false)
+    attemptedTopics.value = new Array(areaCards.length).fill(false)
   }
 
   function initPreQuiz() {
@@ -204,6 +206,10 @@ export const useGameStore = defineStore('game', () => {
     else topicExamResult.value = result
   }
 
+  function markTopicAttempted(index) {
+    attemptedTopics.value[index] = true
+  }
+
   function markTheoryDone(index) {
     thDone.value[index] = true
   }
@@ -223,6 +229,7 @@ export const useGameStore = defineStore('game', () => {
     xp.value = 0
     postScore.value = 0
     thDone.value = []
+    attemptedTopics.value = []
     topicQuizQuestions.value = []
     topicQuizAnswers.value = []
     topicQuizCurrent.value = 0
@@ -265,7 +272,7 @@ export const useGameStore = defineStore('game', () => {
     studentName, currentArea,
     preQuestions, preAnswers, currentPreQ, preScore,
     postQuestions, postAnswers, postAnswered, xp, postScore,
-    thDone,
+    thDone, attemptedTopics,
     topicQuizQuestions, topicQuizAnswers, topicQuizCurrent, topicQuizScore,
     topicQuizMode, topicQuizTopic, topicQuizProgress,
     topicDiagResult, topicExamResult,
@@ -277,6 +284,6 @@ export const useGameStore = defineStore('game', () => {
     initPreQuiz, setPreAnswer, nextPreQuestion, prevPreQuestion, finishPreQuiz,
     initPostQuiz, answerPostQuestion, finishPostQuiz,
     initTopicQuiz, setTopicQuizAnswer, nextTopicQuiz, prevTopicQuiz, finishTopicQuiz,
-    markTheoryDone, resetAll, resetArea, logout,
+    markTopicAttempted, markTheoryDone, resetAll, resetArea, logout,
   }
 })

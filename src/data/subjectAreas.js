@@ -31,4 +31,20 @@ export const subjectAreas = [
     gradient: 'linear-gradient(135deg, #b05c00, #7a3d00)',
     badgeColor: 'rgba(176,92,0,.15)',
   },
+  {
+    id: 'mathskill',
+    name: 'Habilidad Matemática',
+    icon: '🧠',
+    desc: 'Planteo de ecuaciones, razonamiento lógico y resolución de problemas',
+    gradient: 'linear-gradient(135deg, #e11d48, #9f1239)',
+    badgeColor: 'rgba(225,29,72,.15)',
+  },
+  {
+    id: 'verbalskill',
+    name: 'Habilidad Verbal',
+    icon: '📖',
+    desc: 'Lectura comprensiva, análisis de textos y vocabulario',
+    gradient: 'linear-gradient(135deg, #2563eb, #1e3a5f)',
+    badgeColor: 'rgba(37,99,235,.15)',
+  },
 ]

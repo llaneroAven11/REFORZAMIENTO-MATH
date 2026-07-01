@@ -239,6 +239,62 @@ export const theoryCards = [
     }
   },
   {
+    area: 'verbalskill', icon: '📖', title: 'Método y Técnicas de Lectura Comprensiva', sub: 'Estrategias para entender y analizar textos', color: 'th-c10',
+    rule: '1. Explorar (survey)\n2. Preguntar (question)\n3. Leer (read)\n4. Recitar (recite)\n5. Repasar (review)',
+    video: { id: 'rkWb3uAGSSw', title: '8 estrategias para mejorar tu comprensión lectora', author: 'Sapiencia práctica' },
+    headerBg: 'linear-gradient(135deg,#2563eb,#1e3a5f)',
+    sections: [
+      {
+        type: 'steps', title: 'Método SQ3R — Lectura activa en 5 pasos',
+        steps: [
+          { h: '1. Survey (Explorar)', p: 'Antes de leer, hojea el texto: títulos, subtítulos, imágenes, negritas y resúmenes. Hazte una idea general del contenido y su estructura.' },
+          { h: '2. Question (Preguntar)', p: 'Convierte cada título o subtítulo en una pregunta. Por ejemplo, si el título es "Las causas de la Revolución", pregúntate: ¿cuáles fueron las causas? Esto fija un propósito de lectura.' },
+          { h: '3. Read (Leer)', p: 'Lee activamente buscando responder tus preguntas. Subraya ideas principales, palabras clave y datos relevantes. Toma notas al margen.' },
+          { h: '4. Recite (Recitar)', p: 'Sin mirar el texto, explica con tus propias palabras lo que acabas de leer. Puedes hacerlo en voz alta o escribir un breve resumen. Esto fija la información en la memoria.' },
+          { h: '5. Review (Repasar)', p: 'Revisa tus notas y responde mentalmente las preguntas iniciales. Repite este proceso periódicamente para retener la información a largo plazo.' },
+        ]
+      },
+      { type: 'rule', content: 'Antes de leer: EXPLORAR + PREGUNTAR\nDurante la lectura: LEER + SUBRAYAR\nDespués de leer: RECITAR + REPASAR\n\nClaves:\n• Idea principal = lo más importante del párrafo\n• Idea secundaria = detalle que complementa\n• Subrayado solo palabras clave (máx. 30%)' },
+      { type: 'example', content: 'Ejemplo — Aplicación del SQ3R a un texto:\n\nTexto: "La energía solar es una fuente renovable que aprovecha la radiación del sol. Se obtiene mediante paneles fotovoltaicos que convierten la luz en electricidad. Su uso reduce la emisión de gases contaminantes."\n\nPaso 1 (Explorar): Título → "Energía solar". Subtítulos → "Funcionamiento", "Beneficios".\nPaso 2 (Preguntar): ¿Qué es la energía solar? ¿Cómo funciona? ¿Qué ventajas tiene?\nPaso 3 (Leer): Subrayar "fuente renovable", "paneles fotovoltaicos", "reduce emisiones".\nPaso 4 (Recitar): "La energía solar usa paneles para convertir luz en electricidad sin contaminar."\nPaso 5 (Repasar): ¿Cómo se obtiene? ¿Por qué es limpia?' },
+      { type: 'example', content: 'Técnicas complementarias:\n\n• Subrayado: resalta solo lo esencial (ideas principales, fechas, definiciones).\n• Sumillado: escribe al margen una palabra clave que resuma cada párrafo.\n• Mapa conceptual: organiza visualmente las ideas principales y sus relaciones.\n• Resumen: condensa el texto en 3-5 líneas con tus propias palabras.\n• Lectura crítica: cuestiona al autor: ¿es objetivo? ¿qué evidencia presenta?' },
+      { type: 'warn', content: '⚠️ Errores comunes: leer pasivamente sin preguntarte nada, subrayar todo el texto (debes seleccionar máximo 30%), confiar solo en la memoria sin tomar notas, y no repasar lo estudiado. La comprensión lectora se entrena con práctica constante.' },
+    ],
+    quiz: {
+      q: '¿Cuál es el primer paso del método SQ3R?',
+      opts: ['Leer (Read)', 'Explorar (Survey)', 'Recitar (Recite)', 'Repasar (Review)'],
+      ans: 1,
+      exp: 'El primer paso es Survey (Explorar): revisar títulos, subtítulos e imágenes para tener una visión general del texto antes de leerlo a profundidad.'
+    }
+  },
+  {
+    area: 'mathskill', icon: '🧠', title: 'Planteo de Ecuaciones', sub: 'Traducir problemas a lenguaje algebraico', color: 'th-c9',
+    rule: '1. Leer con atención\n2. Identificar datos e incógnita\n3. Traducir a lenguaje algebraico\n4. Resolver la ecuación\n5. Verificar el resultado',
+    video: { id: 'byCSSb69A-o', title: 'Planteamiento de Ecuaciones', author: 'Profe AlexZ' },
+    headerBg: 'linear-gradient(135deg,#e11d48,#9f1239)',
+    sections: [
+      {
+        type: 'steps', title: 'Pasos para plantear una ecuación',
+        steps: [
+          { h: '1. Lee el problema con atención', p: 'Identifica de qué trata, qué datos te dan y qué te preguntan. Si es necesario, léelo dos o tres veces.' },
+          { h: '2. Identifica la incógnita', p: 'Asigna una letra (x, y, etc.) al valor desconocido que necesitas encontrar. Anota qué representa cada variable.' },
+          { h: '3. Traduce al lenguaje algebraico', p: 'Convierte cada frase del problema en una expresión matemática. Palabras clave: "es" → =, "más que" → +, "menos que" → −, "el doble de" → 2·, "la mitad de" → ÷2.' },
+          { h: '4. Resuelve la ecuación', p: 'Aplica las reglas de despeje: lo que suma pasa restando, lo que multiplica pasa dividiendo, etc.' },
+          { h: '5. Verifica y responde', p: 'Sustituye el valor obtenido en el enunciado original. Asegúrate de que cumple todas las condiciones y responde exactamente lo que te preguntan.' },
+        ]
+      },
+      { type: 'rule', content: '"es" → igual (=)\n"más que" → suma (+)\n"menos que" → resta (−)\n"el doble de" → 2·\n"la mitad de" → ÷2\n"el triple de" → 3·\n"excede en" → diferencia (−)\n"consecutivo" → x, x+1, x+2…' },
+      { type: 'example', content: 'Problema: "La suma de tres números consecutivos es 48. Halla el mayor."\n\nPaso 1: Números consecutivos → x, x+1, x+2\nPaso 2: Suma: x + (x+1) + (x+2) = 48\nPaso 3: 3x + 3 = 48 → 3x = 45 → x = 15\nPaso 4: Los números son 15, 16, 17. El mayor es 17.' },
+      { type: 'example', content: 'Problema: "El triple de un número aumentado en 8 equivale a 29. Halla el número."\n\nPaso 1: Sea x el número.\nPaso 2: Triple de x → 3x\nPaso 3: Aumentado en 8 → 3x + 8\nPaso 4: Ecuación: 3x + 8 = 29 → 3x = 21 → x = 7\nPaso 5: Verifica: 3(7)+8 = 21+8 = 29 ✓' },
+      { type: 'warn', content: '⚠️ No confundas "aumentado en" (+) con "es el doble de" (×). Lee con cuidado cada frase. El error más común es sumar cuando deberías multiplicar o viceversa.' },
+    ],
+    quiz: {
+      q: 'La suma de dos números consecutivos es 37. ¿Cuáles son los números?',
+      opts: ['18 y 19', '17 y 20', '15 y 22', '19 y 20'],
+      ans: 0,
+      exp: 'Sean x y x+1 los números. x + (x+1) = 37 → 2x+1 = 37 → 2x = 36 → x = 18. Los números son 18 y 19.'
+    }
+  },
+  {
     area: 'algebra', icon: '⬆️', title: 'Sistemas de Ecuaciones', sub: 'Resolver 2 ecuaciones con 2 incógnitas', color: 'th-c8',
     rule: '$a_1x+b_1y=c_1$  |  $a_2x+b_2y=c_2$\nSustitución: despejar y reemplazar\nEliminación: sumar ecuaciones',
     video: { id: '3FHhPLVUt9o', title: 'Sistemas de ecuaciones 2×2 por sustitución', author: 'julioprofe' },

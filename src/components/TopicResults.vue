@@ -31,7 +31,11 @@
     </div>
 
     <div class="actions">
-      <button class="btn btn-primary" @click="$emit('continue')">Continuar →</button>
+      <button v-if="exam.pct === 100" class="btn btn-primary" @click="$emit('continue')">Continuar →</button>
+      <template v-else>
+        <button class="btn btn-gold" @click="$emit('retry')">Volver a intentar →</button>
+        <button class="btn btn-secondary" @click="$emit('close')">Cerrar</button>
+      </template>
     </div>
   </div>
 </template>
@@ -40,7 +44,7 @@
 import { computed } from 'vue'
 import { useGameStore } from '../stores/gameStore'
 
-defineEmits(['continue'])
+defineEmits(['continue', 'retry', 'close'])
 const store = useGameStore()
 
 const diag = computed(() => store.topicDiagResult || { score: 0, total: 0, pct: 0 })
