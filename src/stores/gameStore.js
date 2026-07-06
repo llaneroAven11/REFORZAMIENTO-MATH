@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { theoryCards } from '../data/theoryCards.js'
 import { pickQuestions, pickQuestionsByTopic, shuffleOptions } from '../data/questionBank.js'
+import { pickUniQuestions, getUniSubjectCounts } from '../data/universityQuestions.js'
 
 const PRE_QUIZ_COUNT = 6
 const POST_QUIZ_COUNT = 9
@@ -214,6 +215,52 @@ export const useGameStore = defineStore('game', () => {
     thDone.value[index] = true
   }
 
+  // University sim state
+  const uniQuestions = ref([])
+  const uniAnswers = ref([])
+  const uniAnswered = ref([])
+
+  const uniAllAnswered = computed(() =>
+    uniQuestions.value.length > 0 && uniAnswered.value.every(Boolean)
+  )
+
+  const uniAnsweredCount = computed(() => uniAnswered.value.filter(Boolean).length)
+
+  const uniScore = ref(0)
+  const uniResults = ref(null)
+
+  function initUniQuiz(universityId) {
+    const qs = pickUniQuestions(universityId)
+    uniQuestions.value = qs
+    uniAnswers.value = new Array(qs.length).fill(null)
+    uniAnswered.value = new Array(qs.length).fill(false)
+    uniScore.value = 0
+    uniResults.value = null
+  }
+
+  function answerUniQuestion(qi, oi) {
+    if (uniAnswered.value[qi]) return
+    uniAnswered.value[qi] = true
+    uniAnswers.value[qi] = oi
+  }
+
+  function finishUniQuiz() {
+    const correct = uniAnswers.value.filter((a, i) => a === uniQuestions.value[i].ans).length
+    uniScore.value = correct
+    const subjects = {}
+    uniQuestions.value.forEach((q, i) => {
+      if (!subjects[q.subject]) subjects[q.subject] = { correct: 0, total: 0 }
+      subjects[q.subject].total++
+      if (uniAnswers.value[i] === q.ans) subjects[q.subject].correct++
+    })
+    uniResults.value = {
+      score: correct,
+      total: uniQuestions.value.length,
+      pct: Math.round((correct / uniQuestions.value.length) * 100),
+      subjects,
+    }
+  }
+
   function resetAll() {
     const name = studentName.value
     studentName.value = ''
@@ -238,6 +285,11 @@ export const useGameStore = defineStore('game', () => {
     topicQuizTopic.value = ''
     topicDiagResult.value = null
     topicExamResult.value = null
+    uniQuestions.value = []
+    uniAnswers.value = []
+    uniAnswered.value = []
+    uniScore.value = 0
+    uniResults.value = null
   }
 
   function resetArea() {
@@ -260,6 +312,9 @@ export const useGameStore = defineStore('game', () => {
     topicQuizTopic.value = ''
     topicDiagResult.value = null
     topicExamResult.value = null
+    uniQuestions.value = []
+    uniAnswers.value = []
+    uniAnswered.value = []
   }
 
   function logout() {
@@ -285,5 +340,8 @@ export const useGameStore = defineStore('game', () => {
     initPostQuiz, answerPostQuestion, finishPostQuiz,
     initTopicQuiz, setTopicQuizAnswer, nextTopicQuiz, prevTopicQuiz, finishTopicQuiz,
     markTopicAttempted, markTheoryDone, resetAll, resetArea, logout,
+    uniQuestions, uniAnswers, uniAnswered, uniAllAnswered, uniAnsweredCount,
+    uniScore, uniResults,
+    initUniQuiz, answerUniQuestion, finishUniQuiz,
   }
 })

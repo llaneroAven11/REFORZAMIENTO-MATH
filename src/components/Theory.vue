@@ -129,8 +129,13 @@ const pct = computed(() => {
 
 onMounted(() => {
   if (!store.currentArea) {
-    router.replace({ name: 'welcome' })
-    return
+    const areaFromRoute = route.params.areaId
+    if (areaFromRoute) {
+      store.setArea(areaFromRoute)
+    } else {
+      router.replace({ name: 'welcome' })
+      return
+    }
   }
   flipped.value = new Array(cards.value.length).fill(false)
 

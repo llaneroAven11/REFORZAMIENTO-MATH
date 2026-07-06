@@ -44,6 +44,24 @@
           </div>
         </div>
       </div>
+
+      <div class="section-label" style="margin-top:48px">Simulacros de admisión</div>
+      <div class="area-grid">
+        <div
+          v-for="uni in universidades"
+          :key="uni.id"
+          class="area-card"
+          :style="{ '--area-bg': uni.gradient }"
+          @click="selectUni(uni.id)"
+        >
+          <div class="area-icon">{{ uni.icon }}</div>
+          <div class="area-info">
+            <div class="area-title">{{ uni.name }}</div>
+            <div class="area-desc">{{ uni.fullName }}</div>
+          </div>
+          <div class="area-topics-count">{{ uni.subjects.length }} materias</div>
+        </div>
+      </div>
     </template>
   </div>
 </template>
@@ -54,10 +72,12 @@ import { useRouter } from 'vue-router'
 import { useGameStore } from '../stores/gameStore'
 import { subjectAreas } from '../data/subjectAreas.js'
 import { theoryCards } from '../data/theoryCards.js'
+import { universities } from '../data/universities.js'
 
 const router = useRouter()
 const store = useGameStore()
 const areas = subjectAreas
+const universidades = universities
 const name = ref('')
 
 function go() {
@@ -72,6 +92,11 @@ function topicsCount(areaId) {
 function selectArea(areaId) {
   store.setArea(areaId)
   router.push({ name: 'theory', params: { areaId } })
+}
+
+function selectUni(uniId) {
+  store.initUniQuiz(uniId)
+  router.push({ name: 'unisim', params: { universityId: uniId } })
 }
 
 function logout() {

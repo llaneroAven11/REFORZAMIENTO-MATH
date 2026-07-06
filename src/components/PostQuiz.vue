@@ -97,7 +97,13 @@ const areaName = computed(() => {
 
 onMounted(() => {
   if (!store.currentArea) {
-    router.replace({ name: 'welcome' })
+    const areaFromRoute = route.params.areaId
+    if (areaFromRoute) {
+      store.setArea(areaFromRoute)
+      store.initPostQuiz()
+    } else {
+      router.replace({ name: 'welcome' })
+    }
   }
 })
 

@@ -89,11 +89,12 @@
 
 <script setup>
 import { computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useGameStore } from '../stores/gameStore'
 import { subjectAreas } from '../data/subjectAreas.js'
 
 const router = useRouter()
+const route = useRoute()
 const store = useGameStore()
 
 const studentName = computed(() => store.studentName || 'Estudiante')
@@ -168,7 +169,12 @@ const improvements = computed(() => {
 
 onMounted(() => {
   if (!store.currentArea) {
-    router.replace({ name: 'welcome' })
+    const areaFromRoute = route.params.areaId
+    if (areaFromRoute) {
+      store.setArea(areaFromRoute)
+    } else {
+      router.replace({ name: 'welcome' })
+    }
   }
 })
 

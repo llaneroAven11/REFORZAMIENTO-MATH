@@ -347,5 +347,57 @@ export const theoryCards = [
       ans: 0,
       exp: 'Sumando: $2x=10 \\Rightarrow x=5$. Luego $5+y=7 \\Rightarrow y=2$. Solución $(5,2)$.'
     }
+  },
+  {
+    area: 'geometry', icon: '🔺', title: 'Triángulos', sub: 'Clasificación, teoremas y líneas notables', color: 'th-c11',
+    rule: '∡ Interiores = 180°\nÁngulo exterior = suma de los dos interiores no adyacentes\nExistencia: a+b>c, b+c>a, a+c>b',
+    video: { id: 'I9S1kBXLkBo', title: 'Clasificación de triángulos', author: 'Daniel Carreón' },
+    headerBg: 'linear-gradient(135deg,#0d9488,#115e59)',
+    sections: [
+      {
+        type: 'steps',
+        title: 'Clasificación de triángulos',
+        steps: [
+          { h: 'Según sus lados', p: '• Equilátero: 3 lados iguales, 3 ángulos de 60°\n• Isósceles: 2 lados iguales, ángulos base iguales\n• Escaleno: 3 lados diferentes, 3 ángulos diferentes' },
+          { h: 'Según sus ángulos', p: '• Acutángulo: 3 ángulos agudos (< 90°)\n• Rectángulo: 1 ángulo recto (= 90°), los otros suman 90°\n• Obtusángulo: 1 ángulo obtuso (> 90°), los otros son agudos' },
+        ]
+      },
+      {
+        type: 'rule',
+        content: 'Teorema fundamental: La suma de los ángulos interiores de cualquier triángulo es 180°.\n∠A + ∠B + ∠C = 180°\n\nTeorema del ángulo exterior: Un ángulo exterior es igual a la suma de los dos ángulos interiores no adyacentes.\n∠ext = ∠A + ∠B\n\nDesigualdad triangular: En todo triángulo, un lado es menor que la suma de los otros dos y mayor que su diferencia.\na + b > c, b + c > a, a + c > b'
+      },
+      {
+        type: 'steps',
+        title: 'Líneas notables',
+        steps: [
+          { h: 'Altura (h)', p: 'Segmento perpendicular desde un vértice al lado opuesto. Ortocentro: punto de intersección de las tres alturas.' },
+          { h: 'Mediana (m)', p: 'Segmento desde un vértice al punto medio del lado opuesto. Baricentro: punto de intersección (divide en razón 2:1).' },
+          { h: 'Bisectriz (b)', p: 'Recta que divide al ángulo en dos partes iguales. Incentro: punto de intersección (centro de la circunferencia inscrita).' },
+          { h: 'Mediatriz', p: 'Recta perpendicular a un lado en su punto medio. Circuncentro: punto de intersección (centro de la circunferencia circunscrita).' },
+        ]
+      },
+      {
+        type: 'rule',
+        content: 'Teoremas de bisectrices:\n\n1. Ángulo formado por dos bisectrices interiores:\nx = 90° + (∠A)/2\n\n2. Ángulo formado por dos bisectrices exteriores:\nx = 90° − (∠A)/2\n\n3. Ángulo formado por bisectriz interior y exterior:\nx = (∠A)/2'
+      },
+      {
+        type: 'example',
+        content: 'Problema tipo admisión:\n\nEn un triángulo ABC, ∠A = 80° y ∠B = 40°. Halla el ángulo formado por las bisectrices interiores de A y B.\n\nPaso 1: ∠C = 180° − 80° − 40° = 60°\nPaso 2: Bisectriz de A forma 40° con cada lado.\nPaso 3: Bisectriz de B forma 20° con cada lado.\nPaso 4: El ángulo entre ambas bisectrices = 180° − (40°+20°) − (∠C/2) = 120° + 30° = ...\nAlternativa: x = 90° + (∠C)/2 = 90° + 30° = 120° ✓'
+      },
+      {
+        type: 'example',
+        content: 'Problema tipo admisión:\n\nLos lados de un triángulo miden 7, 9 y 14. ¿Existe el triángulo?\n\nPaso 1: Desigualdad triangular.\n7 + 9 = 16 > 14 ✓\n9 + 14 = 23 > 7 ✓\n7 + 14 = 21 > 9 ✓\nSí existe, es un triángulo escaleno obtusángulo (14² = 196 > 7²+9² = 130).'
+      },
+      {
+        type: 'warn',
+        content: '⚠️ Errores comunes:\n1. Confundir mediana con altura: la mediana va al punto medio, la altura es perpendicular.\n2. Olvidar que la suma de ángulos interiores es siempre 180°, no 360°.\n3. Aplicar Pitágoras solo en triángulos rectángulos, no en cualquier triángulo.\n4. En la desigualdad triangular, verificar TODAS las combinaciones, no solo dos.'
+      }
+    ],
+    quiz: {
+      q: 'En un triángulo, dos ángulos miden 70° y 50°. ¿Cuánto mide el tercer ángulo?',
+      opts: ['50°', '60°', '70°', '80°'],
+      ans: 1,
+      exp: '180° − 70° − 50° = 60°. ¡Siempre suma 180°!'
+    }
   }
 ]
