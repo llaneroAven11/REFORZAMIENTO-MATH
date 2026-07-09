@@ -399,5 +399,49 @@ export const theoryCards = [
       ans: 1,
       exp: '180° − 70° − 50° = 60°. ¡Siempre suma 180°!'
     }
+  },
+  {
+    area: 'algebra', icon: '📊', title: 'Función Real de Variable Real', sub: 'Dominio, rango y regla de correspondencia', color: 'th-c12',
+    rule: 'f: A → B  |  ∀x∈A, ∃!y∈B: y=f(x)\nDom(f) = {x ∈ ℝ / f(x) ∈ ℝ}\nRan(f) = {y ∈ ℝ / ∃x: y=f(x)}',
+    video: { id: 'c20QWEhBPKs', title: 'Hallar el dominio de una función', author: 'Susi Profe' },
+    headerBg: 'linear-gradient(135deg,#d97706,#92400e)',
+    sections: [
+      {
+        type: 'steps',
+        title: 'Definición de función',
+        steps: [
+          { h: '¿Qué es una función?', p: 'Una función f: A → B es una regla de correspondencia que asigna a cada elemento x del conjunto A (dominio) un único elemento y del conjunto B (codominio), denotado como y = f(x).' },
+          { h: 'Dominio', p: 'El dominio (Dom f) es el conjunto de todos los valores de x para los cuales la función está definida, es decir, existe f(x) como número real.' },
+          { h: 'Rango', p: 'El rango (Ran f) es el conjunto de todos los valores de y que toma la función, es decir, todos los f(x) cuando x recorre el dominio.' },
+          { h: 'Regla de correspondencia', p: 'Es la expresión matemática que relaciona x con y, por ejemplo: $f(x) = x^2 + 1$, $g(x) = \\sqrt{x-2}$, $h(x) = \\frac{1}{x-3}$.' },
+        ]
+      },
+      {
+        type: 'rule',
+        content: 'Función real de variable real:\n\n$f: \\mathbb{R} \\to \\mathbb{R}$ significa que tanto el dominio como el codominio son subconjuntos de los números reales.\n\nPara hallar el dominio:\n• Si hay denominador → denominador $\\neq 0$\n• Si hay raíz par → radicando $\\geq 0$\n• Si hay logaritmo → argumento $> 0$\n\nPara hallar el rango:\n• Despejar $x$ en términos de $y$\n• Analizar qué valores de $y$ producen $x$ real'
+      },
+      {
+        type: 'example',
+        content: 'Ejemplo 1: Halla el dominio y rango de $f(x) = x^2 + 1$\n\nDominio: No hay restricciones (no hay denominador, raíz ni log). $\\text{Dom} = \\mathbb{R}$.\n\nRango: $x^2 \\geq 0 \\rightarrow x^2 + 1 \\geq 1 \\rightarrow \\text{Ran} = [1, +\\infty[$\n\nVerificación: Para $y = 5$, $x^2 = 4 \\rightarrow x = \\pm 2$ (existe).\nPara $y = 0$, $x^2 = -1 \\rightarrow$ no existe $x$ real. ✓'
+      },
+      {
+        type: 'example',
+        content: 'Ejemplo 2: Halla el dominio y rango de $f(x) = \\sqrt{x - 3}$\n\nDominio: $x - 3 \\geq 0 \\rightarrow x \\geq 3 \\rightarrow \\text{Dom} = [3, +\\infty[$\n\nRango: La raíz cuadrada siempre da valores $\\geq 0$.\n$\\text{Ran} = [0, +\\infty[$\n\nVerificación: Para $x = 7$, $f(7) = \\sqrt{4} = 2$.\nPara $x = 3$, $f(3) = 0$ (mínimo valor). ✓'
+      },
+      {
+        type: 'example',
+        content: 'Ejemplo 3: Halla el dominio y rango de $f(x) = \\frac{1}{x - 2}$\n\nDominio: $x - 2 \\neq 0 \\rightarrow x \\neq 2 \\rightarrow \\text{Dom} = \\mathbb{R} - \\{2\\}$\n\nRango: Despejamos $x$:\n$y = \\frac{1}{x-2} \\rightarrow y(x-2) = 1 \\rightarrow yx - 2y = 1 \\rightarrow yx = 1 + 2y \\rightarrow x = \\frac{1+2y}{y}$\nEl denominador $y \\neq 0$. $\\text{Ran} = \\mathbb{R} - \\{0\\}$\n\nVerificación: Para $y = 3$, $x = \\frac{1+6}{3} = \\frac{7}{3}$ (existe).\nPara $y = 0$, no hay $x$ que cumpla. ✓'
+      },
+      {
+        type: 'warn',
+        content: '⚠️ Errores comunes:\n1. Confundir rango con codominio: el rango son los valores que realmente toma la función, no todos los posibles.\n2. Olvidar restricciones del dominio: siempre verifica denominadores ($\\neq 0$) y raíces pares ($\\geq 0$).\n3. Decir que $f(x) = \\sqrt{x}$ tiene dominio $\\mathbb{R}$: el dominio es $x \\geq 0$.\n4. Al despejar $x$ para hallar el rango, no considerar que el denominador no puede ser cero.'
+      }
+    ],
+    quiz: {
+      q: '¿Cuál es el dominio de $f(x)=\\frac{1}{x-5}$?',
+      opts: ['Todos los reales', 'Todo real excepto $x=5$', '$x \\geq 5$', '$x \\leq 5$'],
+      ans: 1,
+      exp: 'El denominador $x-5 \\neq 0$, entonces $x \\neq 5$. Dom $= \\mathbb{R} - \\{5\\}$.'
+    }
   }
 ]

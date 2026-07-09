@@ -147,6 +147,7 @@ export const useGameStore = defineStore('game', () => {
     'Operaciones con Fracciones': 'Fracciones',
     'Desigualdades con Enteros': 'Desigualdades',
     'Expresiones Algebraicas': 'Expresiones con variables',
+    'Función Real de Variable Real': 'Funciones',
   }
 
   const topicQuizProgress = computed(() => {
